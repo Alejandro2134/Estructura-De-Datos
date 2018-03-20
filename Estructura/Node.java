@@ -1,5 +1,5 @@
 /**
-* Esta clase representa la creacion de un objero de tipo nodo con sus contructores y diferentes metodos 
+* Esta clase representa la creacion de un objeto de tipo nodo con sus contructores y diferentes metodos 
 *
 */
 public class Node {
@@ -10,15 +10,21 @@ public class Node {
 	
 	public Node next;
 	
+	//Constructor vacio
 	public Node () {}
 	
+	/**
+	*Esta función permite crear e inicializar el constructor
+	*@param name, age , id
+	*/
 	public Node (String name, int age, int id)
 	{
 		this.name = name;
 		this.age = age;
 		this.id = id;
 	}
-
+	
+	
 	public String toString ()
 	{
 		return "Name: "+this.name+"\tAge: "+this.age+" \tID: "+this.id+"\n";
