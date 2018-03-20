@@ -1,4 +1,7 @@
-
+/**
+* Esta clase representa la creacacion de un objero de tipo nodo con sus contructores y diferentes metodos 
+*
+*/
 public class Node {
 	
 	public String name;
