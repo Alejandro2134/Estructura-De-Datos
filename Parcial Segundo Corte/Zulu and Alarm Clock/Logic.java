@@ -130,6 +130,7 @@ public class Logic {
 	public static void main(String[] args) {
 		
 		int counter = 0;
+		int x = 0;
 	
 		ArrayList<Integer> minValue = new ArrayList <Integer>();
 		ArrayList<String[]> auxClocks = new ArrayList <String[]>();
@@ -162,6 +163,7 @@ public class Logic {
 			for(int i = 0; i < t; i++)
 			{
 				String input [] = br.readLine().split(" ");
+				x = Integer.parseInt(input[1]);
 					
 				for(int j = 0; j < Integer.parseInt(input[0]); j++)
 				{
@@ -349,20 +351,19 @@ public class Logic {
 							clocks.add(auxClocks.get(l).clone());
 					}
 				}
+				
+				int y = 0;
+				minValue.sort(null);
+				
+				for(int j = 0; j < x; j++)
+					 y += minValue.get(j);
+				
+				bw.write(y+" ");
+				bw.flush();
 		
 			}
 			
-			int y = 0;
-			minValue.sort(null);
-			
-			for(int i = 0; i < x; i++)
-				 y += minValue.get(i);
-			
-			bw.write(y+" ");
-			bw.flush();
-
 		}catch (Exception ex) {}
-		
 	}
 
 }
