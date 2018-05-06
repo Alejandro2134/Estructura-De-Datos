@@ -358,7 +358,7 @@ public class Logic {
 				for(int j = 0; j < x; j++)
 					 y += minValue.get(j);
 				
-				bw.write(y+" ");
+				bw.write(y+"\n");
 				bw.flush();
 		
 			}
