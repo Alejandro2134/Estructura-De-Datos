@@ -352,37 +352,13 @@ public class Logic {
 		
 			}
 			
-			int x = minValue.get(0);
-			int y = minValue.get(0);
-			int index = 0;
+			int y = 0;
+			minValue.sort(null);
 			
-			for(int i = 0; i < minValue.size(); i++)
-			{		
-				if(minValue.get(i) < x)
-				{
-					x = minValue.get(i);
-					index = i;
-				}
-					
-				if(i == minValue.size()-1)
-					minValue.remove(index);
-			}
+			for(int i = 0; i < x; i++)
+				 y += minValue.get(i);
 			
-			index = 0;
-			
-			for(int i = 0; i < minValue.size(); i++)
-			{	
-				if(minValue.get(i) < y)
-				{
-					y = minValue.get(i);
-					index = i;
-				}
-					
-				if(i == minValue.size()-1)
-					minValue.remove(index);
-			}
-			
-			bw.write(x+y+" ");
+			bw.write(y+" ");
 			bw.flush();
 
 		}catch (Exception ex) {}
