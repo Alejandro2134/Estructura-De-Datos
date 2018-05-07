@@ -34,6 +34,10 @@ public class Logic {
 		}
 	}
 	
+	/**
+	  * Metodo el cual busca de que forma es mas facil llegar a otra (aumenta o diminuye) 
+	  * @return retorna 1 o 0 dependiendo de que forma sea mas facil llegar a otro segundo 
+	  */
 	public static int calcularseg (String [] clock, String [] alarm, Logic segundos)
 	{
 		int counter = 0;
@@ -65,6 +69,10 @@ public class Logic {
 			return 0;
 	}
 	
+	/**
+	  * Metodo el cual busca de que forma es mas facil llegar a otra (aumenta o diminuye) 
+	  * @return retorna 1 o 0 dependiendo de que forma sea mas facil llegar a otro minuto 
+	  */
 	public static int calcularmin (String [] clock, String [] alarm, Logic minutos)
 	{
 		int counter = 0;
@@ -95,7 +103,10 @@ public class Logic {
 		else
 			return 0;
 	}
-	
+	 /**
+	  * Metodo el cual busca de que forma es mas facil llegar a otra (aumenta o diminuye) 
+	  * @return retorna 1 o 0 dependiendo de que forma sea mas facil llegar a otra hora 
+	  */
 	public static int calcularhor (String [] clock, String [] alarm, Logic horas)
 	{
 		int counter = 0;
@@ -230,7 +241,7 @@ public class Logic {
 									{
 										Node temp = segundos.head; //Se crea una variable de tipo nodo inicializandolo con el primer valor de la lista circular segundos
 											
-										while(temp.num != Integer.parseInt(clocks.get(k)[2])) //ciclo que busca el valor del segundo que se ingreso en el reloj que se esta comparando en la lista circular segundo
+										while(temp.num != Integer.parseInt(clocks.get(k)[2])) //ciclo que busca el valor del segundo que se ingreso en el reloj que se esta comparando en la lista circular segundos
 											temp = temp.next;
 												
 										while(temp.num != Integer.parseInt(alarms.get(j)[2])) //Ciclo el cual a partir del valor hallado anteriormente busca el número de operaciones para llegar al segundo de la alarma 
@@ -248,7 +259,7 @@ public class Logic {
 													aux2 -= 1; // a la cual se le resta 1
 															
 													if(aux2 == -1) //Si el valor de la variable auxialiar es igual a -1 significa que el valor de la hora era 0 por lo tanto este valor debe cambiar a 23
-														clocks.get(k)[0] = "23"; //Secambia el valor de la hora
+														clocks.get(k)[0] = "23"; //Se cambia el valor de la hora
 													else //Si no simplemente el valor de la hora va a bajar una unidad
 														clocks.get(k)[0] = String.valueOf(aux2);
 												}
@@ -261,111 +272,111 @@ public class Logic {
 										}
 									}
 									else
-										if(l == 0 && calcularhor(clocks.get(k), alarms.get(j), horas) == 1) 
+										if(l == 0 && calcularhor(clocks.get(k), alarms.get(j), horas) == 1) //Si se estan comparando horas y la función calcularhor retorna 1 significa que la forma mas rapida de iniciar la alarma es sumarle al contador de horas del reloj que se esta comparando
 										{
-											Node temp = horas.head;
+											Node temp = horas.head; //Se crea una variable de tipo nodo inicializandolo con el primer valor de la lista circular horas
 										
-											while(temp.num != Integer.parseInt(clocks.get(k)[0]))
+											while(temp.num != Integer.parseInt(clocks.get(k)[0])) //ciclo que busca el valor de la hora que se ingreso en el reloj que se esta comparando en la lista circular horas
 												temp = temp.next;
 										
-											while(temp.num != Integer.parseInt(alarms.get(j)[0]))
+											while(temp.num != Integer.parseInt(alarms.get(j)[0])) //Ciclo el cual a partir del valor hallado anteriormente busca el número de operaciones para llegar a la hora de la alarma
 											{
-												temp = temp.next;
-												clocks.get(k)[0] = String.valueOf(temp.num);
-												counter += 1;
+												temp = temp.next; //Se aumenta en una unidad
+												clocks.get(k)[0] = String.valueOf(temp.num); // Se cambia el valor del reloj en su posición de horas   
+												counter += 1; // Se va sumando uno a un contador para saber cuantas operaciones se realizan 
 											}
 														
 									}
 									else
-										if(l == 1 && calcularmin(clocks.get(k), alarms.get(j), minutos) == 1)
+										if(l == 1 && calcularmin(clocks.get(k), alarms.get(j), minutos) == 1) //Si se estan comparando minutos y la funcion calcularmin retorna 1 significa que la forma mas rapida de iniciar la alarma es aumentarle al contador de minutos del reloj que se esta comparando 
 										{
-											Node temp = minutos.head;
+											Node temp = minutos.head; //Se crea una variable de tipo nodo inicializandolo con el primer valor de la lista circular minutos
 													
-											while(temp.num != Integer.parseInt(clocks.get(k)[1]))
+											while(temp.num != Integer.parseInt(clocks.get(k)[1])) //ciclo que busca el valor del minuto que se ingreso en el reloj que se esta comparando en la lista circular minutos
 												temp = temp.next;
 													
-											while(temp.num != Integer.parseInt(alarms.get(j)[1]))
+											while(temp.num != Integer.parseInt(alarms.get(j)[1])) //Ciclo el cual a partir del valor hallado anteriormente busca el número de operaciones para llegar al minuto de la alarma
 											{
-												if(temp.next.num == 0)
+												if(temp.next.num == 0) //Si el valor anterior al que se esta bajando una unidad es igual a 0 significa que el contador de horas debe aumentar en una unidad
 												{
-													int aux = Integer.parseInt(clocks.get(k)[0]);
-													aux += 1;
+													int aux = Integer.parseInt(clocks.get(k)[0]); //Se crea una variable auxiliar la cual almacena el valor de la hora
+													aux += 1; // a la cual se le suma uno 
 															
-													if(aux == 24)
-														clocks.get(k)[0] = "00";
-													else
+													if(aux == 24) //Si el valor de la variable auxiliar es igual a 24 significa que el valor de la hora era 23 por lo tanto este valor debe camiar a 0
+														clocks.get(k)[0] = "00"; //Se cambia el valor de la hora
+													else //Si no simplemente el valor de la hora va a aumentar una unidad
 														clocks.get(k)[0] = String.valueOf(aux);	
 												}
 														
-												temp = temp.next;
-												clocks.get(k)[1] = String.valueOf(temp.num);
-												counter += 1;
+												temp = temp.next; //Se aumenta en una unidad
+												clocks.get(k)[1] = String.valueOf(temp.num); // Se cambia el valor del reloj en su posición de minutos
+												counter += 1; // Se va sumando uno a un contador para saber cuantas operaciones se realizan 
 											}
 										}
 										else
-											if(l == 2 && calcularseg(clocks.get(k), alarms.get(j), segundos) == 1)
+											if(l == 2 && calcularseg(clocks.get(k), alarms.get(j), segundos) == 1) //Si se estan comparando segundos y la función calcularseg retorna 1 significa que la forma mas rapida de iniciar la alarma es aumentarle uno al contador de segundos del reloj que se esta comparando
 											{
-												Node temp = segundos.head;
+												Node temp = segundos.head; //Se crea una variable de tipo nodo inicializandolo con el primer valor de la lista circular segundos
 													
-												while(temp.num != Integer.parseInt(clocks.get(k)[2]))
+												while(temp.num != Integer.parseInt(clocks.get(k)[2])) //ciclo que busca el valor del segundo que se ingreso en el reloj que se esta comparando en la lista circular segundos
 													temp = temp.next;
 														
-												while(temp.num != Integer.parseInt(alarms.get(j)[2]))
+												while(temp.num != Integer.parseInt(alarms.get(j)[2])) //Ciclo el cual a partir del valor hallado anteriormente busca el número de operaciones para llegar al segundo de la alarma	
 												{
-													if(temp.next.num == 0)
+													if(temp.next.num == 0) //Si el siguiente valor al que se le esta aumentando una unidad es igual a 0 significa que el contador de minutos debe aumentar una unidad
 													{
-														int aux = Integer.parseInt(clocks.get(k)[1]);
-														aux += 1;
+														int aux = Integer.parseInt(clocks.get(k)[1]); //Se crea una variable auxiliar la cual almacena el valor del minuto
+														aux += 1; // a la cual se le suma uno 
 																
-														if(aux == 60)
+														if(aux == 60) //Si el valor de la variable auxiliar es igual a 60 significa que el valor del minuto era 59 por lo tanto este valor debe cambiar a 0
 														{
-															clocks.get(j)[1] = "00";
+															clocks.get(j)[1] = "00"; //Se cambia el valor del minuto
 																	
-															int aux2 = Integer.parseInt(clocks.get(k)[0]);
-															aux2 += 1;
+															int aux2 = Integer.parseInt(clocks.get(k)[0]); //Se crea otra variable auxiliar la cual almacena el valor de la hora
+															aux2 += 1; // a la cual se le suma uno 
 																	
-															if(aux2 == 24)
-																clocks.get(k)[0] = "00";
-															else
+															if(aux2 == 24) //Si el valor de la variable auxiliar es igual a 24 significa que el valor de la hora era 23 por lo tanto este valor debe camiar a 0
+																clocks.get(k)[0] = "00"; //Se cambia el valor de la hora
+															else //Si no simplemente el valor de la hora va a aumentar una unidad
 																clocks.get(k)[0] = String.valueOf(aux2);
 														}
-														else
+														else //Si no simplemente el valor del minuto va a aumentar una unidad
 															clocks.get(k)[1] = String.valueOf(aux);
 															
 													}
 															
-													temp = temp.next;
-													clocks.get(k)[2] = String.valueOf(temp.num);
-													counter += 1;
+													temp = temp.next; //Se aumenta en una unidad
+													clocks.get(k)[2] = String.valueOf(temp.num); // Se cambia el valor del reloj en su posición de segundos
+													counter += 1; // Se va sumando uno a un contador para saber cuantas operaciones se realizan 
 												}
 											}	
 								}
 						
-						minValue.add(counter);
-						counter = 0;
+						minValue.add(counter); //Se añade el valor del contador a un ArrayList
+						counter = 0; //Se vuelve a inicializar el contador en 0 
 						
-						clocks.clear();
+						clocks.clear(); //Se borran los datos del ArrayList
 					
 						for(int l = 0; l < Integer.parseInt(input[0]); l++)
-							clocks.add(auxClocks.get(l).clone());
+							clocks.add(auxClocks.get(l).clone()); //Se vuelve a llenar el ArrayList con los datos del ArrayList auxiliar (Esto ya que los datos en el arrayList principal reloj fueron modificados)
 					}
 				}
 				
-				for(int j = 0; j < x; j++)
+				for(int j = 0; j < x; j++)	
 				{
-					if(minValue.size() > 1)
-						minValue.subList(0, x+1).sort(null);
+					if(minValue.size() > 1) //Si el tamaño del arreglo de contadores es mayor a uno
+						minValue.subList(0, x+1).sort(null); //Se organizan los datos de subarreglos de menor a mayor
 					
-					y += minValue.get(0);
+					y += minValue.get(0); //Se mete el primer valor del arreglo ya organizado y se va sumando
 					
-					if(minValue.size() > 1)
-						minValue.subList(0, x+1).clear();	
+					if(minValue.size() > 1) //Si el tamaño del arreglo de contadores es mayor a uno 
+						minValue.subList(0, x+1).clear(); //Se borra la sublista ya organizada	
 				}
 					 
-				bw.write(y+"\n");
+				bw.write(y+"\n"); //Se imprime el valor de la variable y
 				bw.flush();
 		
-				y = 0;
+				y = 0; //Se inicializa en 0
 			}
 			
 		}catch (Exception ex) {}
