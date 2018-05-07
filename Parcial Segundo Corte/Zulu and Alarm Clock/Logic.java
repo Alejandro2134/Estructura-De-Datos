@@ -131,6 +131,7 @@ public class Logic {
 		
 		int counter = 0;
 		int x = 0;
+		int y = 0;
 	
 		ArrayList<Integer> minValue = new ArrayList <Integer>();
 		ArrayList<String[]> auxClocks = new ArrayList <String[]>();
@@ -174,169 +175,169 @@ public class Logic {
 				for(int j = 0; j < Integer.parseInt(input[1]); j++)
 					 alarms.add(alarm  = br.readLine().split(":"));
 				
-				for(int j = 0; j < Integer.parseInt(input[0]); j++ )
+				for(int j = 0; j < Integer.parseInt(input[1]); j++ )
 				{
-					for(int k = 0; k < Integer.parseInt(input[1]); k++)
+					for(int k = 0; k < Integer.parseInt(input[0]); k++)
 					{
 						for(int l = 2; l >= 0; l--)
 						{	
-							if(clocks.get(j)[l].equals(alarms.get(k)[l]))
+							if(clocks.get(k)[l].equals(alarms.get(j)[l]))
 							{
 								counter += 0;
 								l -= 1;
 							}
 							
-							if(l == 0 && calcularhor(clocks.get(j), alarms.get(k), horas) == 0)
+							if(l == 0 && calcularhor(clocks.get(k), alarms.get(j), horas) == 0)
 							{
 								Node temp = horas.head;
 									
-								while(temp.num != Integer.parseInt(clocks.get(j)[0]))
+								while(temp.num != Integer.parseInt(clocks.get(k)[0]))
 									temp = temp.next;
 									
-								while(temp.num != Integer.parseInt(alarms.get(k)[0]))
+								while(temp.num != Integer.parseInt(alarms.get(j)[0]))
 								{
 									temp = temp.prev;
-									clocks.get(j)[0] = String.valueOf(temp.num);
+									clocks.get(k)[0] = String.valueOf(temp.num);
 									counter += 1;
 								}
 													
 							}
 							else
-								if(l == 1 && calcularmin(clocks.get(j), alarms.get(k), minutos) == 0)
+								if(l == 1 && calcularmin(clocks.get(k), alarms.get(j), minutos) == 0)
 								{
 									Node temp = minutos.head;
 											
-									while(temp.num != Integer.parseInt(clocks.get(j)[1]))
+									while(temp.num != Integer.parseInt(clocks.get(k)[1]))
 										temp = temp.next;
 											
-									while(temp.num != Integer.parseInt(alarms.get(k)[1]))
+									while(temp.num != Integer.parseInt(alarms.get(j)[1]))
 									{
 										if(temp.prev.num == 59)
 										{
-											int aux = Integer.parseInt(clocks.get(j)[0]);
+											int aux = Integer.parseInt(clocks.get(k)[0]);
 											aux -= 1;
 													
 											if(aux == -1)
-												clocks.get(j)[0] = "23";
+												clocks.get(k)[0] = "23";
 											else
-												clocks.get(j)[0] = String.valueOf(aux);	
+												clocks.get(k)[0] = String.valueOf(aux);	
 										}	
 										temp = temp.prev;
-										clocks.get(j)[1] = String.valueOf(temp.num);
+										clocks.get(k)[1] = String.valueOf(temp.num);
 										counter += 1;
 									}
 								}
 								else
-									if(l == 2 && calcularseg(clocks.get(j), alarms.get(k), segundos) == 0)
+									if(l == 2 && calcularseg(clocks.get(k), alarms.get(j), segundos) == 0)//
 									{
 										Node temp = segundos.head;
 											
-										while(temp.num != Integer.parseInt(clocks.get(j)[2]))
+										while(temp.num != Integer.parseInt(clocks.get(k)[2]))
 											temp = temp.next;
 												
-										while(temp.num != Integer.parseInt(alarms.get(k)[2]))
+										while(temp.num != Integer.parseInt(alarms.get(j)[2]))
 										{
 											if(temp.prev.num == 59)
 											{
-												int aux = Integer.parseInt(clocks.get(j)[1]);
+												int aux = Integer.parseInt(clocks.get(k)[1]);
 												aux -= 1;
 														
 												if(aux == -1)
 												{
-													clocks.get(j)[1] = "59";
+													clocks.get(k)[1] = "59";
 															
-													int aux2 = Integer.parseInt(clocks.get(j)[0]);
+													int aux2 = Integer.parseInt(clocks.get(k)[0]);
 													aux2 -= 1;
 															
 													if(aux2 == -1)
-														clocks.get(j)[0] = "23";
+														clocks.get(k)[0] = "23";
 													else
-														clocks.get(j)[0] = String.valueOf(aux2);
+														clocks.get(k)[0] = String.valueOf(aux2);
 												}
 												else
-													clocks.get(j)[1] = String.valueOf(aux);
+													clocks.get(k)[1] = String.valueOf(aux);
 											}
 											temp = temp.prev;
-											clocks.get(j)[2] = String.valueOf(temp.num);
+											clocks.get(k)[2] = String.valueOf(temp.num);
 											counter += 1;
 										}
 									}
 									else
-										if(l == 0 && calcularhor(clocks.get(j), alarms.get(k), horas) == 1)
+										if(l == 0 && calcularhor(clocks.get(k), alarms.get(j), horas) == 1)
 										{
 											Node temp = horas.head;
 										
-											while(temp.num != Integer.parseInt(clocks.get(j)[0]))
+											while(temp.num != Integer.parseInt(clocks.get(k)[0]))
 												temp = temp.next;
 										
-											while(temp.num != Integer.parseInt(alarms.get(k)[0]))
+											while(temp.num != Integer.parseInt(alarms.get(j)[0]))
 											{
 												temp = temp.next;
-												clocks.get(j)[0] = String.valueOf(temp.num);
+												clocks.get(k)[0] = String.valueOf(temp.num);
 												counter += 1;
 											}
 														
 									}
 									else
-										if(l == 1 && calcularmin(clocks.get(j), alarms.get(k), minutos) == 1)
+										if(l == 1 && calcularmin(clocks.get(k), alarms.get(j), minutos) == 1)
 										{
 											Node temp = minutos.head;
 													
-											while(temp.num != Integer.parseInt(clocks.get(j)[1]))
+											while(temp.num != Integer.parseInt(clocks.get(k)[1]))
 												temp = temp.next;
 													
-											while(temp.num != Integer.parseInt(alarms.get(k)[1]))
+											while(temp.num != Integer.parseInt(alarms.get(j)[1]))
 											{
 												if(temp.next.num == 0)
 												{
-													int aux = Integer.parseInt(clocks.get(j)[0]);
+													int aux = Integer.parseInt(clocks.get(k)[0]);
 													aux += 1;
 															
 													if(aux == 24)
-														clocks.get(j)[0] = "00";
+														clocks.get(k)[0] = "00";
 													else
-														clocks.get(j)[0] = String.valueOf(aux);	
+														clocks.get(k)[0] = String.valueOf(aux);	
 												}
 														
 												temp = temp.next;
-												clocks.get(j)[1] = String.valueOf(temp.num);
+												clocks.get(k)[1] = String.valueOf(temp.num);
 												counter += 1;
 											}
 										}
 										else
-											if(l == 2 && calcularseg(clocks.get(j), alarms.get(k), segundos) == 1)
+											if(l == 2 && calcularseg(clocks.get(k), alarms.get(j), segundos) == 1)
 											{
 												Node temp = segundos.head;
 													
-												while(temp.num != Integer.parseInt(clocks.get(j)[2]))
+												while(temp.num != Integer.parseInt(clocks.get(k)[2]))
 													temp = temp.next;
 														
-												while(temp.num != Integer.parseInt(alarms.get(k)[2]))
+												while(temp.num != Integer.parseInt(alarms.get(j)[2]))
 												{
 													if(temp.next.num == 0)
 													{
-														int aux = Integer.parseInt(clocks.get(j)[1]);
+														int aux = Integer.parseInt(clocks.get(k)[1]);
 														aux += 1;
 																
 														if(aux == 60)
 														{
 															clocks.get(j)[1] = "00";
 																	
-															int aux2 = Integer.parseInt(clocks.get(j)[0]);
+															int aux2 = Integer.parseInt(clocks.get(k)[0]);
 															aux2 += 1;
 																	
 															if(aux2 == 24)
-																clocks.get(j)[0] = "00";
+																clocks.get(k)[0] = "00";
 															else
-																clocks.get(j)[0] = String.valueOf(aux2);
+																clocks.get(k)[0] = String.valueOf(aux2);
 														}
 														else
-															clocks.get(j)[1] = String.valueOf(aux);
+															clocks.get(k)[1] = String.valueOf(aux);
 															
 													}
 															
 													temp = temp.next;
-													clocks.get(j)[2] = String.valueOf(temp.num);
+													clocks.get(k)[2] = String.valueOf(temp.num);
 													counter += 1;
 												}
 											}	
@@ -352,15 +353,21 @@ public class Logic {
 					}
 				}
 				
-				int y = 0;
-				minValue.sort(null);
-				
 				for(int j = 0; j < x; j++)
-					 y += minValue.get(j);
-				
+				{
+					if(minValue.size() > 1)
+						minValue.subList(0, x+1).sort(null);
+					
+					y += minValue.get(0);
+					
+					if(minValue.size() > 1)
+						minValue.subList(0, x+1).clear();	
+				}
+					 
 				bw.write(y+"\n");
 				bw.flush();
 		
+				y = 0;
 			}
 			
 		}catch (Exception ex) {}
