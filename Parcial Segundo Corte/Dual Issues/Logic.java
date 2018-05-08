@@ -1,8 +1,8 @@
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 
 public class Logic {
 	
@@ -22,7 +22,89 @@ public class Logic {
 		
 		     return true;	     
 		 }   
-	}  
+	} 
+	
+	Node head = null; //Empty List
+	
+	public boolean isEmpty()
+	{
+		return head == null ? true : false;
+	}
+	
+	public int sizeList ()
+	{
+		int counter = 1;
+		
+		Node temp = head;
+		while(temp.next != null) 
+		{
+			temp = temp.next;
+			counter += 1;
+		}
+		return counter;
+	}
+	
+	public void insertAtEnd (Node newNode)
+	{
+		if(isEmpty())
+		{
+			head = newNode;
+		}
+		else
+		{
+			Node temp = head;
+			while(temp.next != null) 
+				temp = temp.next;
+			
+			temp.next = newNode;
+		}
+	}
+	
+	public Node getNode (int index) throws IOException
+	{
+
+		if(sizeList() < index)
+			return null;
+		else
+		{
+			Node temp = head;
+			for(int i = 0; i < index; i++)
+				temp = temp.next;
+			
+			return temp;
+		}
+		
+	}
+	
+	public void quickSort () throws IOException
+	{
+		if(!isEmpty())
+		{
+			Logic leftSet = new Logic();
+			Logic rightSet = new Logic();
+
+			Node temp = head.next;
+			Node pivot = head;
+
+			while(temp != null)
+			{		
+				if(temp.num < pivot.num)
+					leftSet.insertAtEnd(temp.clone());
+				else
+					if(temp.num > pivot.num)
+						rightSet.insertAtEnd(temp.clone());
+									
+				temp = temp.next;
+			}
+				
+			leftSet.quickSort();
+			rightSet.quickSort();
+			pivot.next = rightSet.head;
+			leftSet.insertAtEnd(pivot);
+			head = leftSet.head;		
+		}
+				
+	}
 	
 	public static void main(String[] args) {
 		
@@ -35,7 +117,7 @@ public class Logic {
 			
 			for(int i = 0; i < t; i++)
 			{
-				ArrayList <Integer> mulPrimos = new ArrayList<Integer>();
+				Logic mulPrimos = new Logic();
 				int n = Integer.parseInt(br.readLine());
 				int a [] = new int [n];
 				String input [] = br.readLine().split(" ");
@@ -47,12 +129,12 @@ public class Logic {
 				{
 					if(primo(a[j]))
 					{
-						mulPrimos.add(a[j] * a[j]);
+						mulPrimos.insertAtEnd(new Node(a[j] * a[j]));
 						
 						for(int k = j+1; k < a.length; k++)
 						{
 							if(primo(a[k]))
-								mulPrimos.add(a[j] * a[k]);
+								mulPrimos.insertAtEnd(new Node(a[j] * a[k]));
 						}
 					}
 				}
@@ -61,8 +143,8 @@ public class Logic {
 					bw.write(-1+"\n");
 				else
 				{
-					mulPrimos.sort(null);
-					bw.write(mulPrimos.get(mulPrimos.size()-1)+"\n");
+					mulPrimos.quickSort();
+					bw.write(mulPrimos.getNode(mulPrimos.sizeList()-1).num+"\n");
 				}
 				
 				bw.flush();
