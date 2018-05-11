@@ -365,9 +365,9 @@ public class Logic {
 				for(int j = 0; j < x; j++)	
 				{
 					if(minValue.size() > 1) //Si el tamaño del arreglo de contadores es mayor a uno
-						minValue.subList(0, x+1).sort(null); //Se organizan los datos de subarreglos de menor a mayor
+						minValue.subList(0, x+1).sort(null); //Se organizan los datos en subarreglos de menor a mayor
 					
-					y += minValue.get(0); //Se mete el primer valor del arreglo ya organizado y se va sumando
+					y += minValue.get(0); //Se mete el primer valor del subarreglo ya organizado y se va sumando
 					
 					if(minValue.size() > 1) //Si el tamaño del arreglo de contadores es mayor a uno 
 						minValue.subList(0, x+1).clear(); //Se borra la sublista ya organizada	
