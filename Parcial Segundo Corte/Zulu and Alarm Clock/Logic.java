@@ -374,7 +374,9 @@ public class Logic {
 					if(minValue.size() > 1) //Si el tamaño del arreglo de contadores es mayor a uno 
 						minValue.subList(0, x).clear(); //Se borra la sublista ya organizada	
 				}
-					 
+				
+				auxClocks.clear();
+				clocks.clear();
 				bw.write(y+"\n"); //Se imprime el valor de la variable y
 				bw.flush();
 		
