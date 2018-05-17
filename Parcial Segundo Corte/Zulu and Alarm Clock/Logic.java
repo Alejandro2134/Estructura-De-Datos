@@ -354,12 +354,13 @@ public class Logic {
 						
 						minValue.add(counter); //Se añade el valor del contador a un ArrayList
 						counter = 0; //Se vuelve a inicializar el contador en 0 
-						
-						clocks.clear(); //Se borran los datos del ArrayList
-					
-						for(int l = 0; l < Integer.parseInt(input[0]); l++)
-							clocks.add(auxClocks.get(l).clone()); //Se vuelve a llenar el ArrayList con los datos del ArrayList auxiliar (Esto ya que los datos en el arrayList principal reloj fueron modificados)
+	
 					}
+					
+					clocks.clear(); //Se borran los datos del ArrayList
+					
+					for(int l = 0; l < Integer.parseInt(input[0]); l++)
+						clocks.add(auxClocks.get(l).clone()); //Se vuelve a llenar el ArrayList con los datos del ArrayList auxiliar (Esto ya que los datos en el arrayList principal reloj fueron modificados)
 				}
 				
 				for(int j = 0; j < x; j++)	
