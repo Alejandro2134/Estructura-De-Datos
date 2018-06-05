@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="Estructura"/>
+	<classpathentry kind="src" path="Hackerearth/Little Monk and Goblet of Fire"/>
+	<classpathentry kind="src" path="Hackerearth/Monk and Chamber of Secrets"/>
+	<classpathentry kind="src" path="Hackerearth/Monk and Order of Phoenix"/>
+	<classpathentry kind="src" path="Hackerearth/Monk and Philosophers Stone"/>
+	<classpathentry kind="src" path="Hackerearth/Monk and Prisoner of Azkaban"/>
+	<classpathentry kind="src" path="Parcial Segundo Corte/Dual Issues"/>
+	<classpathentry kind="src" path="Parcial Segundo Corte/Strange Order"/>
+	<classpathentry kind="src" path="Parcial Segundo Corte/Zulu and Alarm Clock"/>
+	<classpathentry kind="src" path="URI"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
