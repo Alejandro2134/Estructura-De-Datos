@@ -66,11 +66,11 @@ public class Logic {
             // no han sido procesados 
             int u = minDistance(graph, dist, sptSet);
  
-            // Se marca el nodo escogido como procesado
+            // Se marca el nodo como procesado
             sptSet[u] = true;
             
-            // Update dist value of the adjacent vertices of the
-            // picked vertex.
+            // Actualiza el valor de distanca de los nodos adyacentes de el 
+            // nodo escogido.
             for (int v = 0; v < graph.nNodes; v++)
  
                 // Actualiza dist[v] solo si no esta en sptSet
