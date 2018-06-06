@@ -60,13 +60,13 @@ public class Logic {
 		if(right.value == target)
 			return left.value;
 		
-		//Si el target es un nodo externo
+		//Si el target es un nodo externo (no tiene hijos)
 		int mirrorVal = findMirrorNode(target,left.left,right.right);
 		
 		if(mirrorVal != 0)
 			return mirrorVal;
 		
-		//Si el target es un nodo interno
+		//Si el target es un nodo interno (tiene hijos a la derecha y a la izquierda)
 		return findMirrorNode(target,left.right,right.left);
 	}
 	
