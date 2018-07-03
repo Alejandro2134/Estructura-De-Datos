@@ -33,14 +33,46 @@ public class Logic {
 					for(int k = 0; k < n; k++)
 					{
 						if(k == 0)
-							input2[k] = Character.toString(input[k].charAt(j)); 
+							input2[j] = Character.toString(input[k].charAt(j)); 
 						else
-							input2[j].concat(Character.toString(input[k].charAt(j)));
+							input2[j] = input2[j].concat(Character.toString(input[k].charAt(j)));
 					}
+				
+				int counter = 0;
+				int x = 0;
+				int y = n-1;
+				
+				while(counter != n/2)
+				{
+					if(!input[x].equals(input[y]))
+					{
+						xFlag = false;
+						break;
+					}						
+					else
+					{
+						xFlag = true;
 						
-				
-				
+						if(!input2[x].equals(input2[y]))
+						{
+							yFlag = false;
+							break;
+						}
+						else
+							yFlag = true;
+					}
 					
+					counter += 1;
+					++x;
+					--y;	
+				}
+				
+				if(xFlag && yFlag)
+					bw.write("YES\n");
+				else
+					bw.write("NO\n");
+		
+				bw.flush();
 			}
 			
 		}catch (Exception ex) {}
