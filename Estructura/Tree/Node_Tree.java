@@ -25,6 +25,4 @@ public class Node_Tree {
 		return "Valor: "+ this.value;
 	}
 	
-	
-
 }
