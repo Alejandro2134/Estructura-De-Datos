@@ -9,5 +9,6 @@
 	<classpathentry kind="src" path="URI"/>
 	<classpathentry kind="src" path="HackerEarth"/>
 	<classpathentry kind="src" path="Parcial Segundo Corte"/>
+	<classpathentry kind="src" path="ProgrammingContestUNIMINUTO"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

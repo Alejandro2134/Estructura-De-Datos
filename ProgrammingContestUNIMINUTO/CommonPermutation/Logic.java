@@ -1,6 +1,6 @@
-package ProgrammingContestUniminuto;
+package CommonPermutation;
 
-public class CommonPermutation {
+public class Logic {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
